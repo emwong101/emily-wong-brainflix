@@ -1,0 +1,20 @@
+@use "../../../styles/partials/colors" as colors;
+
+button {
+  background-color: colors.$primary-color;
+  color: colors.$primary-light;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  clear: none;
+}
+
+p {
+  text-align: center;
+  padding-right: 1rem;
+}
+
+img {
+  float: left;
+  padding-top: 0.5rem;
+}
