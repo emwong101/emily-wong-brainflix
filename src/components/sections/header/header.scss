@@ -22,16 +22,20 @@
   &__search {
     background: url(../../../assets/Images/search.svg) no-repeat 0.5rem;
     max-height: 36px;
-    min-width: 0;
-    width: 240px;
+    // min-width: 0;
+    min-width: 240px;
     border-radius: 4px;
     padding: 0.75rem;
+    padding-left: 2rem;
     padding-top: 1rem;
     border: 1px solid colors.$secondary-grey;
     outline: none;
 
+    &:focus {
+      border: 1px solid colors.$primary-color;
+    }
+
     &::placeholder {
-      padding-left: 1.25rem;
       color: colors.$primary-dark;
     }
 
