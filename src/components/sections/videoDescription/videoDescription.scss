@@ -1,0 +1,51 @@
+@use "../../../styles/partials/colors" as colors;
+@use "../../../styles/partials/breakpoints" as breakpoints;
+@use "../../../styles/partials/fonts" as fonts;
+
+.video {
+  margin: 0 1rem;
+
+  &__info {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-top: 1px solid colors.$secondary-grey;
+    border-bottom: 1px solid colors.$secondary-grey;
+
+    &--date {
+      width: 50%;
+    }
+  }
+
+  &__channel,
+  &__date,
+  &__views,
+  &__likes,
+  &__description {
+    margin: 0;
+    text-align: left;
+    font-size: 0.813rem;
+    color: colors.$primary-grey;
+  }
+
+  &__channel {
+    padding-top: 1rem;
+    font-weight: 600;
+    color: colors.$primary-dark;
+  }
+
+  &__views {
+    padding-top: 1rem;
+    display: flex;
+    align-content: center;
+
+    &--icon {
+      margin: 0 0.5rem;
+      padding: 0;
+    }
+  }
+
+  &__date {
+    padding-bottom: 0.5rem;
+  }
+}

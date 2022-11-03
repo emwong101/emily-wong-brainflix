@@ -1,4 +1,4 @@
-import Avatar from "../../../assets/Images/Mohan-muruge.jpg";
+import Avatar from "../../atoms/Avatar/Avatar";
 import Button from "../../atoms/button/Button";
 import Logo from "../../../assets/Images/BrainFlix-logo.svg";
 import buttonIcon from "../../../assets/Images/upload.svg";
@@ -16,18 +16,10 @@ function Header() {
           className="header__search"
           placeholder="Search"
         ></input>
-        <img
-          className="header__avatar--mobile"
-          src={Avatar}
-          alt="header avatar"
-        />
+        <Avatar className="avatar avatar__icon header__avatar--mobile" />
       </div>
       <Button className="header__button" text="UPLOAD" icon={buttonIcon} />
-      <img
-        className="header__avatar--tablet"
-        src={Avatar}
-        alt="header avatar"
-      />
+      <Avatar className="avatar avatar__icon header__avatar--tablet" />
     </header>
   );
 }

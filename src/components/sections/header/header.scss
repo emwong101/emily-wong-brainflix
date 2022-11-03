@@ -30,6 +30,7 @@
     padding-top: 1rem;
     border: 1px solid colors.$secondary-grey;
     outline: none;
+    margin-right: 1rem;
 
     &:focus {
       border: 1px solid colors.$primary-color;
@@ -48,18 +49,6 @@
   }
 
   &__avatar {
-    &--mobile,
-    &--tablet {
-      background-color: grey;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      display: inline-block;
-      object-fit: cover;
-      margin-left: 1rem;
-      padding: 0;
-    }
-
     &--tablet {
       display: none;
     }
