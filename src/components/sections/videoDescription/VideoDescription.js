@@ -5,10 +5,9 @@ import likeIcon from "../../../assets/Images/likes.svg";
 import "../videoDescription/videoDescription.scss";
 
 function VideoDescription({ videos }) {
-  const { title, channel, description, views, likes, video, timestamp } =
-    videos;
+  const { title, channel, description, views, likes } = videos;
 
-  let date = moment({ timestamp }).format("MM/DD/YYYY");
+  let date = moment(videos.timestamp, "x").format("MM/DD/YYYY");
 
   return (
     <div className="video">
@@ -20,11 +19,11 @@ function VideoDescription({ videos }) {
         </div>
         <div className="video__info--views">
           <p className="video__views">
-            <img className="video__views--icon" src={viewsIcon} />
+            <img className="video__views--icon" src={viewsIcon} alt="views" />
             {views}
           </p>
           <p className="video__likes">
-            <img className="video__likes--icon" src={likeIcon} />
+            <img className="video__likes--icon" src={likeIcon} alt="likes" />
             {likes}
           </p>
         </div>

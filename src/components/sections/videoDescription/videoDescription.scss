@@ -13,7 +13,12 @@
     border-bottom: 1px solid colors.$secondary-grey;
 
     &--date {
-      width: 50%;
+      // width: 50%;
+      flex: 1 1 0;
+    }
+
+    &--views {
+      flex: 1 1 0;
     }
   }
 
@@ -47,5 +52,16 @@
 
   &__date {
     padding-bottom: 0.5rem;
+  }
+
+  &__likes {
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-content: center;
+
+    &--icon {
+      margin: 0 0.5rem;
+      padding: 0;
+    }
   }
 }
