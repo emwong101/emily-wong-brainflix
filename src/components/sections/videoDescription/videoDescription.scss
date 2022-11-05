@@ -1,0 +1,130 @@
+@use "../../../styles/partials/colors" as colors;
+@use "../../../styles/partials/breakpoints" as breakpoints;
+@use "../../../styles/partials/fonts" as fonts;
+
+.video {
+  margin: 0 1rem;
+
+  &__info {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-top: 1px solid colors.$secondary-grey;
+    border-bottom: 1px solid colors.$secondary-grey;
+
+    &--date {
+      // width: 50%;
+      flex: 1 1 0;
+    }
+
+    &--views {
+      flex: 1 1 0;
+    }
+  }
+
+  &__channel,
+  &__date,
+  &__views,
+  &__likes,
+  &__description {
+    margin: 0;
+    text-align: left;
+    font-size: 0.813rem;
+    color: colors.$primary-grey;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+  }
+
+  &__channel {
+    padding-top: 1rem;
+    font-weight: 600;
+    color: colors.$primary-dark;
+  }
+
+  &__views {
+    padding-top: 1rem;
+    display: flex;
+    align-content: center;
+
+    &--icon {
+      margin: 0 0.5rem;
+      padding: 0;
+    }
+  }
+
+  &__date {
+    padding-bottom: 0.5rem;
+  }
+
+  &__likes {
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-content: center;
+
+    &--icon {
+      margin: 0 0.5rem;
+      padding: 0;
+    }
+  }
+
+  &__description {
+    color: colors.$primary-dark;
+    line-height: 2;
+    padding-top: 1rem;
+  }
+}
+
+@include breakpoints.medium {
+  .video {
+    margin: 0 1.5rem;
+    &__info {
+      border-top: none;
+      justify-content: space-between;
+      align-items: center;
+
+      &__title {
+        font-size: 2rem;
+      }
+      &--date {
+        display: flex;
+        align-items: center;
+      }
+
+      &--views {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+    &__channel {
+      padding: 0;
+      padding-right: 1.5rem;
+    }
+
+    &__date {
+      padding: 0;
+    }
+
+    &__views {
+      padding-top: 0;
+      margin-right: 1.5rem;
+      align-items: center;
+    }
+
+    &__likes {
+      padding: 0;
+    }
+  }
+}
+
+@include breakpoints.large {
+  .video {
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+
+    &__info--views {
+      padding-right: 1.5rem;
+    }
+  }
+}

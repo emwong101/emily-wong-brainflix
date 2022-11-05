@@ -1,0 +1,172 @@
+@use "../../../styles/partials/colors" as colors;
+@use "../../../styles/partials/breakpoints" as breakpoints;
+@use "../../../styles/partials/fonts" as fonts;
+
+.comments {
+  &__div {
+    display: flex;
+    border-top: 1px solid colors.$secondary-grey;
+    margin: 1rem 1rem 0rem 1rem;
+    &:last-of-type {
+      border-bottom: 1px solid colors.$secondary-grey;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__count {
+    padding: 1rem;
+    margin: 0;
+  }
+
+  &__form-container {
+    display: flex;
+    align-items: flex-start;
+    margin: 0 1rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex: auto;
+  }
+
+  &__label {
+    font-size: 0.75rem;
+    line-height: 2;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    color: colors.$primary-grey;
+    font-weight: 600;
+  }
+
+  &__comment-input {
+    width: 100%;
+    height: 5rem;
+    resize: none;
+    margin-bottom: 1rem;
+    border: 1px solid colors.$secondary-grey;
+    border-radius: 4px;
+    padding: 0.5rem;
+
+    &::placeholder {
+      color: colors.$primary-dark;
+    }
+  }
+
+  &__button {
+    width: 100%;
+  }
+
+  &__text-box {
+    margin-right: 1rem;
+    width: 100%;
+  }
+
+  &__user-photo {
+    margin: 1.25rem 1rem;
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: fit-content;
+  }
+
+  &__text-top {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: 0.813rem;
+    font-weight: 600;
+    color: colors.$primary-dark;
+  }
+
+  &__time {
+    margin: 0;
+    font-size: 0.813rem;
+    font-weight: 400;
+    color: colors.$primary-grey;
+    padding: 0;
+  }
+
+  &__content {
+    margin: 0;
+    padding: 0;
+    font-size: 0.813rem;
+    line-height: 1.25;
+    text-align: left;
+    color: colors.$primary-dark;
+  }
+}
+
+@include breakpoints.medium {
+  .comments {
+    &__form {
+      flex-wrap: nowrap;
+      align-items: flex-start;
+
+      &-container {
+        margin: 0 1.5rem;
+      }
+    }
+
+    &__comment-input {
+      height: 2.5rem;
+      margin-right: 1.5rem;
+      margin-bottom: 0;
+      flex: 2.5;
+      font-size: 0.875rem;
+    }
+
+    &__button {
+      flex: 1;
+    }
+
+    &__input-container {
+      display: flex;
+      width: 100%;
+    }
+
+    &__content {
+      font-size: 0.875rem;
+    }
+    &__name {
+      font-size: 0.875rem;
+    }
+    &__div {
+      margin: 1.5rem;
+      margin-bottom: 0;
+    }
+  }
+}
+
+@include breakpoints.large {
+  .comments {
+    &__count {
+      padding: 1.5rem;
+    }
+
+    &__form {
+      padding-left: 1.5rem;
+    }
+
+    &__div {
+      margin-right: 0;
+    }
+
+    &__user-photo {
+      margin-right: 0;
+    }
+
+    &__text-box {
+      padding-left: 1.5rem;
+    }
+  }
+}

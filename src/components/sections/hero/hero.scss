@@ -1,0 +1,21 @@
+@use "../../../styles/partials/colors" as colors;
+@use "../../../styles/partials/breakpoints" as breakpoints;
+
+.video__player {
+  background-color: colors.$primary-dark;
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 16/9;
+}
+
+@include breakpoints.medium {
+  .video__player {
+    padding: 0 1.5rem;
+  }
+}
+
+@include breakpoints.large {
+  .video__player {
+    padding: 0 10%;
+  }
+}
