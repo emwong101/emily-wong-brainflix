@@ -33,6 +33,10 @@
     color: colors.$primary-grey;
   }
 
+  &__title {
+    font-size: 1.5rem;
+  }
+
   &__channel {
     padding-top: 1rem;
     font-weight: 600;
@@ -62,6 +66,65 @@
     &--icon {
       margin: 0 0.5rem;
       padding: 0;
+    }
+  }
+
+  &__description {
+    color: colors.$primary-dark;
+    line-height: 2;
+    padding-top: 1rem;
+  }
+}
+
+@include breakpoints.medium {
+  .video {
+    margin: 0 1.5rem;
+    &__info {
+      border-top: none;
+      justify-content: space-between;
+      align-items: center;
+
+      &__title {
+        font-size: 2rem;
+      }
+      &--date {
+        display: flex;
+        align-items: center;
+      }
+
+      &--views {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+    &__channel {
+      padding: 0;
+      padding-right: 1.5rem;
+    }
+
+    &__date {
+      padding: 0;
+    }
+
+    &__views {
+      padding-top: 0;
+      margin-right: 1.5rem;
+      align-items: center;
+    }
+
+    &__likes {
+      padding: 0;
+    }
+  }
+}
+
+@include breakpoints.large {
+  .video {
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+
+    &__info--views {
+      padding-right: 1.5rem;
     }
   }
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import "./hero.scss";
 //use video details json
 function Hero({ activeVideo }) {
   const {
@@ -6,7 +7,11 @@ function Hero({ activeVideo }) {
     // video
   } = activeVideo;
 
-  return <video poster={image} controls></video>;
+  return (
+    <div className="video__container">
+      <video className="video__player" poster={image} controls></video>
+    </div>
+  );
 }
 
 export default Hero;

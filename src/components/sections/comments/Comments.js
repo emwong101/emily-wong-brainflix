@@ -10,7 +10,7 @@ function Comments({ comments }) {
   };
 
   return (
-    <div>
+    <div className="comments">
       <h4 className="comments__count">{comments.length} comments</h4>
       <div className="comments__form-container">
         <div className="comments__user-photo">
@@ -25,18 +25,20 @@ function Comments({ comments }) {
           <label htmlFor="commentsComment" className="comments__label">
             JOIN THE CONVERSATION
           </label>
-          <textarea
-            type="text"
-            className="comments__comment-input"
-            id="commentsComment"
-            name="commentsComment"
-            placeholder="Add a new comment"
-          ></textarea>
-          <Button
-            className="comments__button"
-            icon={commentIcon}
-            text="COMMENT"
-          />
+          <div className="comments__input-container">
+            <textarea
+              type="text"
+              className="comments__comment-input"
+              id="commentsComment"
+              name="commentsComment"
+              placeholder="Add a new comment"
+            ></textarea>
+            <Button
+              className="comments__button"
+              icon={commentIcon}
+              text="COMMENT"
+            />
+          </div>
         </form>
       </div>
       {comments.map((comment) => (

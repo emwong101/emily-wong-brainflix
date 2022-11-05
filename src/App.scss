@@ -1,3 +1,5 @@
+@use "./styles/partials/breakpoints";
+
 html,
 body {
   margin: 0;
@@ -12,4 +14,14 @@ body {
   box-sizing: inherit;
   max-width: 100%;
   font-family: "Avenir-Next";
+}
+
+@include breakpoints.large {
+  .main-content {
+    display: flex;
+
+    &__left {
+      width: 60%;
+    }
+  }
 }

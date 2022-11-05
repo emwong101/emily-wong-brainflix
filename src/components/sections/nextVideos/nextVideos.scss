@@ -3,12 +3,19 @@
 @use "../../../styles/partials/fonts" as fonts;
 
 .next-video {
+  margin: 0 1rem;
   &__heading {
     margin: 0;
-    padding-left: 1rem;
     color: colors.$primary-grey;
     font-size: 0.8rem;
     font-weight: 600;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
   }
 
   &__div {
@@ -25,6 +32,7 @@
   &__image {
     object-fit: cover;
     min-width: 7rem;
+    max-width: 7rem;
     height: 4.25rem;
     border-radius: 4px;
     padding: 0;
@@ -33,7 +41,7 @@
       height: fit-content;
       width: fit-content;
       border-radius: 4px;
-      padding: 0 1rem;
+      padding-right: 1rem;
     }
   }
 
@@ -58,5 +66,38 @@
   &__channel {
     font-weight: 400;
     line-height: 2.25;
+  }
+}
+
+@include breakpoints.medium {
+  .next-video {
+    margin: 0 1.5rem;
+
+    &__heading {
+      font-size: 0.875rem;
+    }
+
+    &__title {
+      font-size: 0.875rem;
+    }
+
+    &__channel {
+      font-size: 0.875rem;
+    }
+
+    &__list {
+      width: 50%;
+    }
+  }
+}
+
+@include breakpoints.large {
+  .next-video {
+    border-left: 1px solid colors.$secondary-grey;
+    padding-left: 1.5rem;
+    margin-left: 0;
+    &__list {
+      width: 100%;
+    }
   }
 }

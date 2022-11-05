@@ -30,9 +30,13 @@ function App() {
     <>
       <Header />
       <Hero activeVideo={activeVideo} />
-      <VideoDescription videos={activeVideo} />
-      <Comments comments={activeVideo.comments} />
-      <NextVideos videos={video} selectNext={handleClick} />
+      <div className="main-content">
+        <div className="main-content__left">
+          <VideoDescription videos={activeVideo} />
+          <Comments comments={activeVideo.comments} />
+        </div>
+        <NextVideos videos={video} selectNext={handleClick} />
+      </div>
     </>
   );
 }

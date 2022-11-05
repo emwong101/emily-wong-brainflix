@@ -16,10 +16,9 @@ function Header() {
           className="header__search"
           placeholder="Search"
         ></input>
-        <Avatar className="avatar avatar__icon header__avatar--mobile" />
+        <Avatar className="avatar avatar__icon header__avatar" />
+        <Button className="header__button" text="UPLOAD" icon={buttonIcon} />
       </div>
-      <Button className="header__button" text="UPLOAD" icon={buttonIcon} />
-      <Avatar className="avatar avatar__icon header__avatar--tablet" />
     </header>
   );
 }
