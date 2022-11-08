@@ -1,11 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="home" element={<App />} />
+        <Route path="home/:videoID" element={<App />} />
+        <Route
+          path="*"
+          element={
+            <>
+              <h1>Video not Found</h1>
+            </>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

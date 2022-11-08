@@ -1,11 +1,7 @@
 import React from "react";
 import "./hero.scss";
-//use video details json
 function Hero({ activeVideo }) {
-  const {
-    image,
-    // video
-  } = activeVideo;
+  const { image } = activeVideo;
 
   return (
     <div className="video__container">

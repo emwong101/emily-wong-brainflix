@@ -1,39 +1,40 @@
-//styles
+// styles
 import "./App.scss";
 
-//components
+// components
 import Comments from "./components/sections/comments/Comments";
 import Header from "./components/sections/header/Header";
 import Hero from "./components/sections/hero/Hero";
 import NextVideos from "./components/sections/nextVideos/NextVideos";
 import VideoDescription from "./components/sections/videoDescription/VideoDescription";
 
-//data
+// libraries
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+// API Links
 const allVideos =
   "https://project-2-api.herokuapp.com/videos?api_key=536ba9bc-8a92-4bd6-8a10-a3a876def07a";
 const specificVideo = (videoID) =>
   `https://project-2-api.herokuapp.com/videos/${videoID}?api_key=536ba9bc-8a92-4bd6-8a10-a3a876def07a`;
 
+// App function
 function App() {
+  // states
   const [videoID, setVideoID] = useState(
     "84e96018-4022-434e-80bf-000ce4cd12b8"
   );
   const [video, setVideo] = useState();
   const [activeVideo, setActiveVideo] = useState({});
 
-  const getVideo = (arr, videoID) => {
-    arr.filter((video) => video.id !== videoID);
-  };
-
+  // click handler for switching videos
   const handleClick = (event, videoID) => {
     event.preventDefault();
     setVideoID(videoID);
     setActiveVideo(specificVideo(videoID));
   };
 
+  //API call for rendering video list
   useEffect(() => {
     const render = async () => {
       try {
@@ -46,6 +47,7 @@ function App() {
     render();
   }, [videoID]);
 
+  //API call for showing active video
   useEffect(() => {
     const fetchVideos = async () => {
       try {
