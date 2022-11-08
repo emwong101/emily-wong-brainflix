@@ -43,6 +43,8 @@ function App() {
     render();
   }, [videoID]);
 
+  console.log(activeVideo);
+
   return (
     <>
       <Header />
@@ -50,7 +52,7 @@ function App() {
       <div className="main-content">
         <div className="main-content__left">
           <VideoDescription videos={activeVideo} />
-          <Comments comments={activeVideo.comments} />
+          {activeVideo && <Comments comments={activeVideo.comments} />}
         </div>
         <NextVideos videos={video} selectNext={handleClick} />
       </div>
