@@ -9,7 +9,6 @@ import NextVideos from "./components/sections/nextVideos/NextVideos";
 import VideoDescription from "./components/sections/videoDescription/VideoDescription";
 
 //data
-import { getVideoDetails, getVideos } from "./utils/utils";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -22,12 +21,16 @@ function App() {
   const [videoID, setVideoID] = useState(
     "84e96018-4022-434e-80bf-000ce4cd12b8"
   );
-  const [video, setVideo] = useState(getVideos(videoID));
+  const [video, setVideo] = useState();
   const [activeVideo, setActiveVideo] = useState({});
+
+  const getVideo = (arr, videoID) => {
+    arr.filter((video) => video.id !== videoID);
+  };
+
   const handleClick = (event, videoID) => {
     event.preventDefault();
     setVideoID(videoID);
-    setVideo(getVideos(videoID));
     setActiveVideo(specificVideo(videoID));
   };
 
@@ -43,7 +46,18 @@ function App() {
     render();
   }, [videoID]);
 
-  console.log(activeVideo);
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const { data } = await axios.get(allVideos);
+        const vidList = data.filter((video) => video.id !== videoID);
+        setVideo(vidList);
+      } catch (error) {
+        console.log("Error");
+      }
+    };
+    fetchVideos();
+  }, [videoID]);
 
   return (
     <>
@@ -52,9 +66,9 @@ function App() {
       <div className="main-content">
         <div className="main-content__left">
           <VideoDescription videos={activeVideo} />
-          {activeVideo && <Comments comments={activeVideo.comments} />}
+          {activeVideo.comments && <Comments comments={activeVideo.comments} />}
         </div>
-        <NextVideos videos={video} selectNext={handleClick} />
+        {video && <NextVideos videos={video} selectNext={handleClick} />}
       </div>
     </>
   );

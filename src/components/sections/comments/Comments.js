@@ -11,7 +11,7 @@ function Comments({ comments }) {
 
   return (
     <div className="comments">
-      <h4 className="comments__count">{comments?.length} comments</h4>
+      <h4 className="comments__count">{comments.length} comments</h4>
       <div className="comments__form-container">
         <div className="comments__user-photo">
           <Avatar className="avatar avatar__icon" />
@@ -48,10 +48,10 @@ function Comments({ comments }) {
           </div>
           <div className="comments__text-box">
             <div className="comments__text-top">
-              <h4 className="comments__name">{comment?.name}</h4>
-              <p className="comments__time">{date(comment?.timestamp)}</p>
+              <h4 className="comments__name">{comment.name}</h4>
+              <p className="comments__time">{date(comment.timestamp)}</p>
             </div>
-            <p className="comments__content">{comment?.comment}</p>
+            <p className="comments__content">{comment.comment}</p>
           </div>
         </div>
       ))}
