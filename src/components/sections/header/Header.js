@@ -1,5 +1,5 @@
 import Avatar from "../../atoms/Avatar/Avatar";
-import Button from "../../atoms/button/Button";
+
 import Logo from "../../../assets/Images/BrainFlix-logo.svg";
 import buttonIcon from "../../../assets/Images/upload.svg";
 import "../header/header.scss";
@@ -18,7 +18,14 @@ function Header(props) {
           placeholder="Search"
         ></input>
         <Avatar className="avatar avatar__icon header__avatar" />
-        <Button className="header__button" text="UPLOAD" icon={buttonIcon} />
+        <Link to="/upload" className="header__button">
+          <img
+            alt="button icon"
+            src={buttonIcon}
+            className="header__button--img"
+          />
+          <p className="header__button--text">UPLOAD</p>
+        </Link>
       </div>
     </header>
   );

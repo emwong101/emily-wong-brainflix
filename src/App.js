@@ -29,32 +29,32 @@ function App() {
   // click handler for switching videos
   const handleClick = (event, videoID) => {
     event.preventDefault();
-    setVideoID(videoID);
   };
 
   //API call for default page
   const params = useParams();
-  console.log(params);
+
   useEffect(() => {
     if (Object.keys(params).length === 0) {
       const render = async () => {
         try {
           const { data: videoList } = await axios.get(allVideos);
           const { data } = await axios.get(specificVideo(defaultVideo));
-          console.log(data);
+
           const vidList = videoList.filter(
             (video) => video.id !== defaultVideo
           );
+
           setVideo(vidList);
           setActiveVideo(data);
-          console.log(data);
+          setVideoID(defaultVideo);
         } catch (error) {
           console.log("Error");
         }
       };
       render();
     }
-  }, [params]);
+  }, [defaultVideo, params]);
 
   //API call for rendering different video paths
   useEffect(() => {
@@ -63,11 +63,14 @@ function App() {
         try {
           const { data: videoList } = await axios.get(allVideos);
           const { data } = await axios.get(specificVideo(params.videoID));
+
           const vidList = videoList.filter(
             (video) => video.id !== params.videoID
           );
+
           setVideo(vidList);
           setActiveVideo(data);
+          setVideoID(params.videoID);
         } catch (error) {
           console.log(" Error");
         }
