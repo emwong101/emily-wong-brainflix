@@ -11,6 +11,7 @@ import VideoDescription from "./components/sections/videoDescription/VideoDescri
 // libraries
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 // API Links
 const allVideos =
@@ -18,12 +19,10 @@ const allVideos =
 const specificVideo = (videoID) =>
   `https://project-2-api.herokuapp.com/videos/${videoID}?api_key=536ba9bc-8a92-4bd6-8a10-a3a876def07a`;
 
-// App function
 function App() {
   // states
-  const [videoID, setVideoID] = useState(
-    "84e96018-4022-434e-80bf-000ce4cd12b8"
-  );
+  const [videoID, setVideoID] = useState(null);
+  const [defaultVideo] = useState("84e96018-4022-434e-80bf-000ce4cd12b8");
   const [video, setVideo] = useState();
   const [activeVideo, setActiveVideo] = useState({});
 
@@ -31,35 +30,51 @@ function App() {
   const handleClick = (event, videoID) => {
     event.preventDefault();
     setVideoID(videoID);
-    setActiveVideo(specificVideo(videoID));
   };
 
-  //API call for rendering video list
+  //API call for default page
+  const params = useParams();
+  console.log(params);
   useEffect(() => {
-    const render = async () => {
-      try {
-        const { data } = await axios.get(specificVideo(videoID));
-        setActiveVideo(data);
-      } catch (error) {
-        console.log("Error");
-      }
-    };
-    render();
-  }, [videoID]);
+    if (Object.keys(params).length === 0) {
+      const render = async () => {
+        try {
+          const { data: videoList } = await axios.get(allVideos);
+          const { data } = await axios.get(specificVideo(defaultVideo));
+          console.log(data);
+          const vidList = videoList.filter(
+            (video) => video.id !== defaultVideo
+          );
+          setVideo(vidList);
+          setActiveVideo(data);
+          console.log(data);
+        } catch (error) {
+          console.log("Error");
+        }
+      };
+      render();
+    }
+  }, [params]);
 
-  //API call for showing active video
+  //API call for rendering different video paths
   useEffect(() => {
-    const fetchVideos = async () => {
-      try {
-        const { data } = await axios.get(allVideos);
-        const vidList = data.filter((video) => video.id !== videoID);
-        setVideo(vidList);
-      } catch (error) {
-        console.log("Error");
-      }
-    };
-    fetchVideos();
-  }, [videoID]);
+    if (params.videoID) {
+      const fetchVideos = async () => {
+        try {
+          const { data: videoList } = await axios.get(allVideos);
+          const { data } = await axios.get(specificVideo(params.videoID));
+          const vidList = videoList.filter(
+            (video) => video.id !== params.videoID
+          );
+          setVideo(vidList);
+          setActiveVideo(data);
+        } catch (error) {
+          console.log(" Error");
+        }
+      };
+      fetchVideos();
+    }
+  }, [params]);
 
   return (
     <>
@@ -67,7 +82,11 @@ function App() {
       <Hero activeVideo={activeVideo} />
       <div className="main-content">
         <div className="main-content__left">
-          <VideoDescription videos={activeVideo} />
+          <VideoDescription
+            videos={activeVideo}
+            setVideos={setActiveVideo}
+            videoID={videoID}
+          />
           {activeVideo.comments && <Comments comments={activeVideo.comments} />}
         </div>
         {video && <NextVideos videos={video} selectNext={handleClick} />}

@@ -3,13 +3,14 @@ import Button from "../../atoms/button/Button";
 import Logo from "../../../assets/Images/BrainFlix-logo.svg";
 import buttonIcon from "../../../assets/Images/upload.svg";
 import "../header/header.scss";
+import { Link } from "react-router-dom";
 
-function Header() {
+function Header(props) {
   return (
     <header className="header">
-      <div className="header__logo--container">
+      <Link to="/home" className="header__logo--container">
         <img src={Logo} alt="header logo" className="header__logo--image" />
-      </div>
+      </Link>
       <div className="header__search--container">
         <input
           type="text"

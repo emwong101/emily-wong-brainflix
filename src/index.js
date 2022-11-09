@@ -10,7 +10,8 @@ root.render(
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="home" element={<App />} />
-        <Route path="home/:videoID" element={<App />} />
+        <Route path="video" element={<App />} />
+        <Route path="video/:videoID" element={<App />} />
         <Route
           path="*"
           element={

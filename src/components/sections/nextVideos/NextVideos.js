@@ -17,7 +17,7 @@ export default function NextVideos({ videos, selectNext }) {
           >
             <Link
               className="next-video__link"
-              to={`/home/${video.id}`}
+              to={`/video/${video.id}`}
               key={video.id}
             >
               <div className="next-video__image--div">
