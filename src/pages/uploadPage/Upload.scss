@@ -1,0 +1,96 @@
+@use "../../styles/partials/colors" as colors;
+@use "../../styles/partials/breakpoints" as breakpoints;
+@use "../../styles/partials/fonts" as fonts;
+
+.upload {
+  padding: 0 1rem;
+  border-top: 2px solid colors.$secondary-grey;
+
+  &__heading {
+    margin: 0;
+    padding-top: 2rem;
+    color: colors.$primary-dark;
+    font-size: 1.5rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+  }
+
+  &__figure {
+    margin: 0;
+  }
+
+  &__thumbnail {
+    padding: 0;
+    background-color: colors.$secondary-grey;
+    border-radius: 4px;
+  }
+
+  &__label {
+    color: colors.$primary-grey;
+    font-weight: bold;
+    font-size: 0.75rem;
+    line-height: 20px;
+    padding-top: 1rem;
+  }
+
+  &__title,
+  &__description {
+    min-height: 2.25rem;
+    border: 1.5px solid colors.$secondary-grey;
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    padding-bottom: 0;
+
+    &::placeholder {
+      color: colors.$primary-dark;
+    }
+
+    &:focus {
+      border: 2px solid colors.$primary-color;
+      outline: none;
+    }
+  }
+
+  &__description {
+    min-height: 2.25rem;
+    height: 5rem;
+    padding-bottom: 2.5rem;
+    padding-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  &__results {
+    font-weight: 600;
+    text-align: left;
+    font-style: italic;
+    padding-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #d22d2d;
+  }
+
+  &__cancel {
+    border: none;
+    outline: none;
+    background: none;
+    padding: 2rem 0;
+    color: colors.$primary-color;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      color: colors.$secondary-color;
+    }
+  }
+}
+
+.success {
+  color: colors.$primary-color;
+}
+
+.error {
+  border: 1px solid #d22d2d;
+}
