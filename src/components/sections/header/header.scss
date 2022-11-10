@@ -87,6 +87,7 @@
       margin: 0;
       flex: 1 1 0;
       font-family: "Avenir-Next";
+      font-size: 0.75rem;
     }
   }
 }
@@ -131,6 +132,10 @@
       margin-top: 0;
       flex: 1;
       order: 2;
+
+      &--text {
+        font-size: 0.75rem;
+      }
     }
   }
 }
