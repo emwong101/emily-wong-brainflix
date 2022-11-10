@@ -38,7 +38,7 @@ function Upload() {
     <div className="upload">
       <h1 className="upload__heading">Upload Video</h1>
 
-      <form className="upload__form" action="" onSubmit={handleSubmit}>
+      <form className="upload__form" id="uploadForm" onSubmit={handleSubmit}>
         <figure className="upload__figure">
           <figcaption className="upload__label">VIDEO THUMBNAIL</figcaption>
           <img
@@ -47,26 +47,30 @@ function Upload() {
             src={Thumbnail}
           ></img>
         </figure>
-        <label className="upload__label" htmlFor="uploadTitle">
-          TITLE YOUR VIDEO
-        </label>
-        <input
-          name="uploadTitle"
-          id="uploadTitle"
-          type="text"
-          placeholder="Add a title to your video"
-          className={`upload__title ${title === "" ? "error" : ""}`}
-        ></input>
-        <label className="upload__label" htmlFor="uploadDescription">
-          ADD A VIDEO DESCRIPTION
-        </label>
-        <input
-          name="uploadDescription"
-          id="uploadDescription"
-          type="text"
-          placeholder="Add a description to your video"
-          className={`upload__description ${description === "" ? "error" : ""}`}
-        ></input>
+        <div className="upload__form--inputs">
+          <label className="upload__label" htmlFor="uploadTitle">
+            TITLE YOUR VIDEO
+          </label>
+          <input
+            name="uploadTitle"
+            id="uploadTitle"
+            type="text"
+            placeholder="Add a title to your video"
+            className={`upload__title ${title === "" ? "error" : ""}`}
+          ></input>
+          <label className="upload__label" htmlFor="uploadDescription">
+            ADD A VIDEO DESCRIPTION
+          </label>
+          <input
+            name="uploadDescription"
+            id="uploadDescription"
+            type="text"
+            placeholder="Add a description to your video"
+            className={`upload__description ${
+              description === "" ? "error" : ""
+            }`}
+          ></input>
+        </div>
         <span
           className={`upload__results ${
             description?.length > 0 && title?.length > 0 ? "success" : ""
@@ -74,11 +78,14 @@ function Upload() {
         >
           {submitResults}
         </span>
+      </form>
+      <div className="upload__button--div">
         <Button
           className="upload__submit"
           type="submit"
           text="PUBLISH"
           icon={publishIcon}
+          form="uploadForm"
         />
         <input
           className="upload__cancel"
@@ -86,7 +93,7 @@ function Upload() {
           type="button"
           value="CANCEL"
         ></input>
-      </form>
+      </div>
     </div>
   );
 }
