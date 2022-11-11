@@ -69,15 +69,15 @@ function Upload() {
             className={`upload__description ${
               description === "" ? "error" : ""
             }`}
-          ></input>
+          ></input>{" "}
+          <span
+            className={`upload__results ${
+              description?.length > 0 && title?.length > 0 ? "success" : ""
+            }`}
+          >
+            {submitResults}
+          </span>
         </div>
-        <span
-          className={`upload__results ${
-            description?.length > 0 && title?.length > 0 ? "success" : ""
-          }`}
-        >
-          {submitResults}
-        </span>
       </form>
       <div className="upload__button--div">
         <Button

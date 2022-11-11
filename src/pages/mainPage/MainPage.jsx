@@ -57,7 +57,7 @@ function MainPage() {
   };
 
   //API call for default page
-
+  console.log(params);
   useEffect(() => {
     if (Object.keys(params).length === 0) {
       const render = async () => {

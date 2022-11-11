@@ -36,6 +36,9 @@
     &:last-of-type {
       padding-bottom: 1rem;
     }
+    &:hover {
+      opacity: 70%;
+    }
   }
 
   &__image {
