@@ -1,0 +1,176 @@
+@use "../../styles/partials/colors" as colors;
+@use "../../styles/partials/breakpoints" as breakpoints;
+@use "../../styles/partials/fonts" as fonts;
+
+.upload {
+  padding: 0 1rem;
+  border-top: 2px solid colors.$secondary-grey;
+
+  &__heading {
+    margin: 0;
+    padding-top: 2rem;
+    color: colors.$primary-dark;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+
+    &--inputs {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__figure {
+    margin: 0;
+  }
+
+  &__thumbnail {
+    padding: 0;
+    background-color: colors.$secondary-grey;
+    border-radius: 4px;
+  }
+
+  &__label {
+    color: colors.$primary-grey;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 20px;
+    padding-top: 1rem;
+  }
+
+  &__title,
+  &__description {
+    min-height: 2.25rem;
+    border: 1.5px solid colors.$secondary-grey;
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    padding-bottom: 0;
+
+    &::placeholder {
+      color: colors.$primary-dark;
+    }
+
+    &:focus {
+      border: 2px solid colors.$primary-color;
+      outline: none;
+    }
+  }
+
+  &__submit {
+    width: 100%;
+  }
+
+  &__description {
+    min-height: 2.25rem;
+    height: 5rem;
+    padding-bottom: 2.5rem;
+    padding-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  &__results {
+    font-weight: 600;
+    text-align: left;
+    font-style: italic;
+    padding-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #d22d2d;
+  }
+
+  &__cancel {
+    border: none;
+    outline: none;
+    background: none;
+    padding: 2rem 0;
+    color: colors.$primary-color;
+    font-weight: 600;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+
+    &:hover {
+      color: colors.$secondary-color;
+    }
+  }
+}
+
+.success {
+  color: colors.$primary-color;
+}
+
+.error {
+  border: 1px solid #d22d2d;
+}
+
+@include breakpoints.medium {
+  .upload {
+    padding: 0 1.5rem;
+
+    &__heading {
+      padding-top: 2.25rem;
+      padding-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+
+    &__form {
+      border-top: 2px solid colors.$secondary-grey;
+      border-bottom: 2px solid colors.$secondary-grey;
+    }
+
+    &__thumbnail {
+      width: 25rem;
+    }
+
+    &__label {
+      padding-top: 1.5rem;
+    }
+
+    &__button--div {
+      display: flex;
+      flex-direction: row-reverse;
+      padding: 1.5rem 0;
+      align-items: center;
+    }
+
+    &__cancel {
+      margin: 0;
+      padding: 0;
+    }
+
+    &__submit {
+      min-width: 150px;
+      width: 10rem;
+      margin-left: 5rem;
+    }
+  }
+}
+
+@include breakpoints.large {
+  .upload {
+    padding: 0 5rem;
+    &__form {
+      flex-direction: row;
+
+      &--inputs {
+        padding-left: 1.5rem;
+        width: 100%;
+      }
+    }
+
+    &__description {
+      margin-bottom: 2rem;
+    }
+
+    &__results {
+      text-align: left;
+      align-self: flex-end;
+      line-height: 1;
+      padding-left: 1rem;
+    }
+  }
+}

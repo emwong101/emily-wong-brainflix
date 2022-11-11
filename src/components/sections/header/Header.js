@@ -1,15 +1,16 @@
 import Avatar from "../../atoms/Avatar/Avatar";
-import Button from "../../atoms/button/Button";
+
 import Logo from "../../../assets/Images/BrainFlix-logo.svg";
 import buttonIcon from "../../../assets/Images/upload.svg";
 import "../header/header.scss";
+import { Link } from "react-router-dom";
 
-function Header() {
+function Header(props) {
   return (
     <header className="header">
-      <div className="header__logo--container">
+      <Link to="/home" className="header__logo--container">
         <img src={Logo} alt="header logo" className="header__logo--image" />
-      </div>
+      </Link>
       <div className="header__search--container">
         <input
           type="text"
@@ -17,7 +18,14 @@ function Header() {
           placeholder="Search"
         ></input>
         <Avatar className="avatar avatar__icon header__avatar" />
-        <Button className="header__button" text="UPLOAD" icon={buttonIcon} />
+        <Link to="/upload" className="header__button">
+          <img
+            alt="button icon"
+            src={buttonIcon}
+            className="header__button--img"
+          />
+          <p className="header__button--text">UPLOAD</p>
+        </Link>
       </div>
     </header>
   );

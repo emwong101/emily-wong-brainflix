@@ -44,7 +44,7 @@
       align-items: center;
       padding-top: 1rem;
       flex-wrap: wrap;
-      max-width: 18rem;
+      min-width: 18rem;
       margin: 0 auto;
     }
   }
@@ -56,8 +56,39 @@
 
   &__button {
     width: 100%;
-    display: block;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     margin-top: 1rem;
+    background-color: colors.$primary-color;
+    color: colors.$primary-light;
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+    clear: none;
+    padding: 0;
+    text-decoration: none;
+
+    &:hover {
+      background-color: colors.$secondary-color;
+    }
+
+    &--img {
+      float: left;
+      padding-top: 0.5rem;
+      padding-left: 0.5rem;
+      align-self: flex-start;
+    }
+
+    &--text {
+      text-align: center;
+      padding-right: 1.5rem;
+      padding-top: 0.25rem;
+      margin: 0;
+      flex: 1 1 0;
+      font-family: "Avenir-Next";
+      font-size: 0.75rem;
+    }
   }
 }
 
@@ -101,6 +132,10 @@
       margin-top: 0;
       flex: 1;
       order: 2;
+
+      &--text {
+        font-size: 0.75rem;
+      }
     }
   }
 }
@@ -111,6 +146,7 @@
 
     &__search {
       margin: 0;
+      min-height: 3rem;
     }
 
     &__avatar {
@@ -118,9 +154,13 @@
     }
 
     &__button {
-      flex: 0.5;
-      padding: 0 2rem;
-      max-width: 15%;
+      padding: 1.5rem 0;
+      max-width: 10%;
+
+      &--img {
+        align-self: center;
+        padding-bottom: 0.5rem;
+      }
     }
   }
 }

@@ -3,10 +3,35 @@ import Avatar from "../../../components/atoms/Avatar/Avatar";
 import "./Comments.scss";
 import commentIcon from "../../../assets/Images/add_comment.svg";
 import moment from "moment";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
-function Comments({ comments }) {
+function Comments({
+  comments,
+  submit,
+  commentRef,
+  videoID,
+  specificVideo,
+  setActiveVideo,
+}) {
   const date = (time) => {
     return moment(time).format("MM/DD/YYYY");
+  };
+
+  comments.sort((a, b) => {
+    return b.timestamp - a.timestamp;
+  });
+
+  const deleteComment = async (commentID) => {
+    const deleteURL = `https://project-2-api.herokuapp.com/videos/${videoID}/comments/${commentID}?api_key=0a31848d-f986-4555-b2f6-6db9bf1ecb95`;
+    try {
+      await axios.delete(deleteURL);
+      const { data } = await axios.get(specificVideo(videoID));
+      setActiveVideo(data);
+    } catch {
+      console.log("Error");
+    }
   };
 
   return (
@@ -21,6 +46,7 @@ function Comments({ comments }) {
           className="comments__form"
           id="commentsForm"
           name="commentsForm"
+          onSubmit={submit}
         >
           <label htmlFor="commentsComment" className="comments__label">
             JOIN THE CONVERSATION
@@ -32,6 +58,7 @@ function Comments({ comments }) {
               id="commentsComment"
               name="commentsComment"
               placeholder="Add a new comment"
+              ref={commentRef}
             ></textarea>
             <Button
               className="comments__button"
@@ -41,15 +68,24 @@ function Comments({ comments }) {
           </div>
         </form>
       </div>
-      {comments.map((comment) => (
-        <div className="comments__div" key={comment.id}>
+      {comments?.map((comment) => (
+        <div className="comments__div" key={comment?.id}>
           <div className="comments__user-photo">
             <Avatar className="avatar" />
           </div>
           <div className="comments__text-box">
             <div className="comments__text-top">
               <h4 className="comments__name">{comment.name}</h4>
-              <p className="comments__time">{date(comment.timestamp)}</p>
+              <div className="comments__dynamic">
+                <p className="comments__time">{date(comment.timestamp)}</p>
+                <FontAwesomeIcon
+                  className="comments__delete"
+                  onClick={() => {
+                    deleteComment(comment.id);
+                  }}
+                  icon={faTrashCan}
+                />
+              </div>
             </div>
             <p className="comments__content">{comment.comment}</p>
           </div>

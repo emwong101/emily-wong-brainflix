@@ -1,0 +1,27 @@
+@use "../../styles/partials/breakpoints";
+
+html,
+body {
+  margin: 0;
+  line-height: 1.8rem;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  max-width: 100%;
+  font-family: "Avenir-Next";
+}
+
+@include breakpoints.large {
+  .main-content {
+    display: flex;
+
+    &__left {
+      width: 60%;
+    }
+  }
+}
