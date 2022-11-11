@@ -38,7 +38,7 @@ function Upload() {
     <div className="upload">
       <h1 className="upload__heading">Upload Video</h1>
 
-      <form className="upload__form" id="uploadForm" onSubmit={handleSubmit}>
+      <form className="upload__form" id="form1" onSubmit={handleSubmit}>
         <figure className="upload__figure">
           <figcaption className="upload__label">VIDEO THUMBNAIL</figcaption>
           <img
@@ -81,11 +81,11 @@ function Upload() {
       </form>
       <div className="upload__button--div">
         <Button
+          form="form1"
           className="upload__submit"
           type="submit"
           text="PUBLISH"
           icon={publishIcon}
-          form="uploadForm"
         />
         <input
           className="upload__cancel"

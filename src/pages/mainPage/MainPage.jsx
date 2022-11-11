@@ -15,12 +15,12 @@ import { useRef } from "react";
 
 // API Links
 const allVideos =
-  "https://project-2-api.herokuapp.com/videos?api_key=536ba9bc-8a92-4bd6-8a10-a3a876def07a";
+  "https://project-2-api.herokuapp.com/videos?api_key=0a31848d-f986-4555-b2f6-6db9bf1ecb95";
 const specificVideo = (videoID) =>
-  `https://project-2-api.herokuapp.com/videos/${videoID}?api_key=536ba9bc-8a92-4bd6-8a10-a3a876def07a`;
+  `https://project-2-api.herokuapp.com/videos/${videoID}?api_key=0a31848d-f986-4555-b2f6-6db9bf1ecb95`;
 
 const commentURL = (videoID) =>
-  `https://project-2-api.herokuapp.com/videos/${videoID}/comments?api_key=536ba9bc-8a92-4bd6-8a10-a3a876def07a`;
+  `https://project-2-api.herokuapp.com/videos/${videoID}/comments?api_key=0a31848d-f986-4555-b2f6-6db9bf1ecb95`;
 
 function MainPage() {
   // states
@@ -40,10 +40,20 @@ function MainPage() {
   };
 
   //submit handler for updating comment state upon form submit
-  const handleSubmit = (event) => {
+  const submitHandle = (event) => {
     event.preventDefault();
     setComment(commentRef.current.value);
-    console.log(comments);
+    event.target.reset();
+  };
+
+  //delete button function
+  const deleteComment = async (commentID) => {
+    const videoID = params.videoID;
+    await axios.delete(
+      `https://project-2-api.herokuapp.com/videos/${videoID}/comments/${commentID}?api_key=536ba9bc-8a92-4bd6-8a10-a3a876def07a`
+    );
+    const { data } = await axios.get(specificVideo(videoID));
+    setActiveVideo(data);
   };
 
   //API call for default page
@@ -104,13 +114,14 @@ function MainPage() {
           });
           const { data } = await axios.get(specificVideo(videoID));
           setActiveVideo(data);
+          setComment("");
         } catch {
           console.log("Error");
         }
       };
       post();
     }
-  }, [comments]);
+  }, [comments, videoID]);
 
   return (
     <>
@@ -125,8 +136,12 @@ function MainPage() {
           {activeVideo.comments && (
             <Comments
               comments={activeVideo.comments}
-              submit={handleSubmit}
+              submit={submitHandle}
               commentRef={commentRef}
+              deleteComment={deleteComment}
+              videoID={videoID}
+              specificVideo={specificVideo}
+              setActiveVideo={setActiveVideo}
             />
           )}
         </div>
