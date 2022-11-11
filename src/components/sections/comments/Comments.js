@@ -4,10 +4,14 @@ import "./Comments.scss";
 import commentIcon from "../../../assets/Images/add_comment.svg";
 import moment from "moment";
 
-function Comments({ comments }) {
+function Comments({ comments, submit, commentRef }) {
   const date = (time) => {
     return moment(time).format("MM/DD/YYYY");
   };
+
+  comments.sort((a, b) => {
+    return b.timestamp - a.timestamp;
+  });
 
   return (
     <div className="comments">
@@ -21,6 +25,7 @@ function Comments({ comments }) {
           className="comments__form"
           id="commentsForm"
           name="commentsForm"
+          onSubmit={submit}
         >
           <label htmlFor="commentsComment" className="comments__label">
             JOIN THE CONVERSATION
@@ -32,6 +37,7 @@ function Comments({ comments }) {
               id="commentsComment"
               name="commentsComment"
               placeholder="Add a new comment"
+              ref={commentRef}
             ></textarea>
             <Button
               className="comments__button"
