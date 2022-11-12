@@ -46,25 +46,13 @@ function MainPage() {
     event.target.reset();
   };
 
-  //delete button function
-  const deleteComment = async (commentID) => {
-    const videoID = params.videoID;
-    await axios.delete(
-      `https://project-2-api.herokuapp.com/videos/${videoID}/comments/${commentID}?api_key=157a170e-0d59-422e-9b2c-16efb4469423`
-    );
-    const { data } = await axios.get(specificVideo(videoID));
-    setActiveVideo(data);
-  };
-
   //API call for default page
-  console.log(params);
   useEffect(() => {
     if (Object.keys(params).length === 0) {
       const render = async () => {
         try {
           const { data: videoList } = await axios.get(allVideos);
           const { data } = await axios.get(specificVideo(defaultVideo));
-          console.log(data);
           const vidList = videoList.filter(
             (video) => video.id !== defaultVideo
           );
@@ -138,7 +126,6 @@ function MainPage() {
               comments={activeVideo.comments}
               submit={submitHandle}
               commentRef={commentRef}
-              deleteComment={deleteComment}
               videoID={videoID}
               specificVideo={specificVideo}
               setActiveVideo={setActiveVideo}
