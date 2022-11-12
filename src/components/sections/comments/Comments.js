@@ -24,7 +24,7 @@ function Comments({
   });
 
   const deleteComment = async (commentID) => {
-    const deleteURL = `https://project-2-api.herokuapp.com/videos/${videoID}/comments/${commentID}?api_key=0a31848d-f986-4555-b2f6-6db9bf1ecb95`;
+    const deleteURL = `https://project-2-api.herokuapp.com/videos/${videoID}/comments/${commentID}?api_key=157a170e-0d59-422e-9b2c-16efb4469423`;
     try {
       await axios.delete(deleteURL);
       const { data } = await axios.get(specificVideo(videoID));
