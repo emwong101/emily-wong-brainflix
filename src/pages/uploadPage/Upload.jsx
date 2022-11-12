@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 import Button from "../../components/atoms/button/Button";
 import publishIcon from "../../assets/Images/publish.svg";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 function Upload() {
   const [submitResults, setSubmitResults] = useState("");
@@ -21,15 +23,31 @@ function Upload() {
     if (titleInput.length === 0 && descriptionInput.length === 0) {
       setTitle(titleInput);
       setDescription(descriptionInput);
-      setSubmitResults("Input values cannot be empty");
+      toast.error("Input values cannot be empty", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        theme: "colored",
+        hideProgressBar: true,
+        autoClose: 1000,
+      });
     } else if (titleInput.length === 0 || descriptionInput.length === 0) {
       setTitle(titleInput);
       setDescription(descriptionInput);
-      setSubmitResults("Please fill out all input values");
+      toast.error("Please fill out all input values", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        theme: "colored",
+        hideProgressBar: true,
+        autoClose: 1000,
+      });
     } else {
       setTitle(titleInput);
       setDescription(descriptionInput);
-      setSubmitResults("Upload successful!");
+      // setSubmitResults("Upload successful!");
+      toast.success("Upload successful!", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        theme: "colored",
+        hideProgressBar: true,
+        autoClose: 1000,
+      });
       setTimeout(() => navigate("/home"), 1500);
     }
   };
@@ -70,13 +88,7 @@ function Upload() {
               description === "" ? "error" : ""
             }`}
           ></input>{" "}
-          <span
-            className={`upload__results ${
-              description?.length > 0 && title?.length > 0 ? "success" : ""
-            }`}
-          >
-            {submitResults}
-          </span>
+          <ToastContainer />
         </div>
       </form>
       <div className="upload__button--div">
