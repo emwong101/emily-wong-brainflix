@@ -15,12 +15,12 @@ import { useRef } from "react";
 
 // API Links
 const allVideos =
-  "https://project-2-api.herokuapp.com/videos?api_key=0a31848d-f986-4555-b2f6-6db9bf1ecb95";
+  "https://project-2-api.herokuapp.com/videos?api_key=157a170e-0d59-422e-9b2c-16efb4469423";
 const specificVideo = (videoID) =>
-  `https://project-2-api.herokuapp.com/videos/${videoID}?api_key=0a31848d-f986-4555-b2f6-6db9bf1ecb95`;
+  `https://project-2-api.herokuapp.com/videos/${videoID}?api_key=157a170e-0d59-422e-9b2c-16efb4469423`;
 
 const commentURL = (videoID) =>
-  `https://project-2-api.herokuapp.com/videos/${videoID}/comments?api_key=0a31848d-f986-4555-b2f6-6db9bf1ecb95`;
+  `https://project-2-api.herokuapp.com/videos/${videoID}/comments?api_key=157a170e-0d59-422e-9b2c-16efb4469423`;
 
 function MainPage() {
   // states
@@ -50,7 +50,7 @@ function MainPage() {
   const deleteComment = async (commentID) => {
     const videoID = params.videoID;
     await axios.delete(
-      `https://project-2-api.herokuapp.com/videos/${videoID}/comments/${commentID}?api_key=536ba9bc-8a92-4bd6-8a10-a3a876def07a`
+      `https://project-2-api.herokuapp.com/videos/${videoID}/comments/${commentID}?api_key=157a170e-0d59-422e-9b2c-16efb4469423`
     );
     const { data } = await axios.get(specificVideo(videoID));
     setActiveVideo(data);

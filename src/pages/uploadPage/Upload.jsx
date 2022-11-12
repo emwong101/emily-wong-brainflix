@@ -9,7 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 
 function Upload() {
-  const [submitResults, setSubmitResults] = useState("");
   const [title, setTitle] = useState(null);
   const [description, setDescription] = useState(null);
 
@@ -41,7 +40,6 @@ function Upload() {
     } else {
       setTitle(titleInput);
       setDescription(descriptionInput);
-      // setSubmitResults("Upload successful!");
       toast.success("Upload successful!", {
         position: toast.POSITION.BOTTOM_RIGHT,
         theme: "colored",
