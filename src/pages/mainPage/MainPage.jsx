@@ -14,10 +14,9 @@ import { useParams } from "react-router-dom";
 import { useRef } from "react";
 
 // API Links
-const allVideos =
-  "https://project-2-api.herokuapp.com/videos?api_key=157a170e-0d59-422e-9b2c-16efb4469423";
-const specificVideo = (videoID) =>
-  `https://project-2-api.herokuapp.com/videos/${videoID}?api_key=157a170e-0d59-422e-9b2c-16efb4469423`;
+
+const allVideos = "http://localhost:8080/videos";
+const specificVideo = (videoID) => `http://localhost:8080/videos/${videoID}`;
 
 const commentURL = (videoID) =>
   `https://project-2-api.herokuapp.com/videos/${videoID}/comments?api_key=157a170e-0d59-422e-9b2c-16efb4469423`;
