@@ -19,7 +19,7 @@ const allVideos = "http://localhost:8080/videos";
 const specificVideo = (videoID) => `http://localhost:8080/videos/${videoID}`;
 
 const commentURL = (videoID) =>
-  `https://project-2-api.herokuapp.com/videos/${videoID}/comments?api_key=157a170e-0d59-422e-9b2c-16efb4469423`;
+  `http://localhost:8080/videos/${videoID}/comments`;
 
 function MainPage() {
   // states
@@ -31,11 +31,13 @@ function MainPage() {
 
   //react hook declarations
   const commentRef = useRef();
+  const videoRef = useRef();
   const params = useParams();
 
   // click handler for switching videos
   const handleClick = (event) => {
     event.preventDefault();
+    videoRef.current.load();
   };
 
   //submit handler for updating comment state upon form submit
@@ -88,7 +90,7 @@ function MainPage() {
       };
       fetchVideos();
     }
-  }, [params]);
+  }, [params, activeVideo]);
 
   //API call for comment posting
   useEffect(() => {
@@ -96,7 +98,6 @@ function MainPage() {
       const post = async () => {
         try {
           await axios.post(commentURL(videoID), {
-            name: "Anon",
             comment: comments,
           });
           const { data } = await axios.get(specificVideo(videoID));
@@ -112,7 +113,7 @@ function MainPage() {
 
   return (
     <>
-      <Hero activeVideo={activeVideo} />
+      <Hero activeVideo={activeVideo} params={params} videoRef={videoRef} />
       <div className="main-content">
         <div className="main-content__left">
           <VideoDescription
@@ -128,6 +129,7 @@ function MainPage() {
               videoID={videoID}
               specificVideo={specificVideo}
               setActiveVideo={setActiveVideo}
+              activeVideo={activeVideo}
             />
           )}
         </div>
