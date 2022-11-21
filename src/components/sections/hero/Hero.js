@@ -1,11 +1,23 @@
 import React from "react";
 import "./hero.scss";
-function Hero({ activeVideo }) {
-  const { image } = activeVideo;
+
+function Hero({ activeVideo, videoRef }) {
+  const { image, video } = activeVideo;
+
+  const ended = (event) => {
+    event.target.load();
+  };
 
   return (
     <div className="video__container">
-      <video className="video__player" poster={image} controls></video>
+      <video
+        ref={videoRef}
+        className="video__player"
+        poster={image}
+        src={video}
+        onEnded={ended}
+        controls
+      ></video>
     </div>
   );
 }

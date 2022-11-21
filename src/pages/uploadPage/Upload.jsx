@@ -6,11 +6,13 @@ import React from "react";
 import Button from "../../components/atoms/button/Button";
 import publishIcon from "../../assets/Images/publish.svg";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 function Upload() {
   const [title, setTitle] = useState(null);
   const [description, setDescription] = useState(null);
+  const uploadURL = "http://localhost:8080/videos/upload";
 
   const navigate = useNavigate();
 
@@ -40,13 +42,20 @@ function Upload() {
     } else {
       setTitle(titleInput);
       setDescription(descriptionInput);
-      toast.success("Upload successful!", {
-        position: toast.POSITION.BOTTOM_RIGHT,
-        theme: "colored",
-        hideProgressBar: true,
-        autoClose: 1000,
-      });
-      setTimeout(() => navigate("/home"), 1500);
+      const post = async () => {
+        await axios.post(uploadURL, {
+          title: titleInput,
+          description: descriptionInput,
+        });
+        toast.success("Upload successful!", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          theme: "colored",
+          hideProgressBar: true,
+          autoClose: 1000,
+        });
+        setTimeout(() => navigate("/home"), 1500);
+      };
+      post();
     }
   };
 
